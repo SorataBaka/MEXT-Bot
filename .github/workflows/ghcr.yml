@@ -1,0 +1,25 @@
+name: GHCR Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Login
+      env:
+        GHCR_USER: ${{secrets.GHCR_USER}}
+        GHCR_PASSWORD: ${{secrets.GHCR_PASSWORD}}
+      run: docker login ghcr.io -u $GHCR_USER -p $GHCR_PASSWORD
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/soratabaka/mext-bot .
+    - name: Docker Push
+      run: docker push ghcr.io/soratabaka/akame-v2
