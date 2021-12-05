@@ -11,6 +11,10 @@ const guildSchema = new mongoose.Schema({
   mainrole: {
     type: String,
     required: true
+  },
+  bannedrole: {
+    type: String,
+    required: true
   }
 })
 
