@@ -50,10 +50,7 @@ export interface ClientCollectionsInterface {
   editSnipes:Collection<string, messageEditHeader[]>
 }
 export interface ClientDatabaseInterface {
-  guildData:Model
-  messageReaction:Model
-  boostertoken:Model
-  boosterroles:Model
+  guildData:Model<any>
   RedisClient:RedisClient
   getAsync:Function
   setAsync:function
@@ -64,7 +61,6 @@ export interface ClientExtensionInterface extends Client{
   EventCollection:Collection<string, Events>
   PREFIX:string
   ClientFunction:ClientFunctionInterface
-  ClientCollection:ClientCollectionsInterface
   ClientDatabase:ClientDatabaseInterface
   INVITE_LINK:string
 }

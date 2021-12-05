@@ -1,16 +1,17 @@
 import mongoose from "mongoose"
-const boostertoken = new mongoose.Schema({
+const guildSchema = new mongoose.Schema({
   guildid: {
     type: String,
     required: true
   },
-  memberid: {
+  requiredRoles: [{
     type: String,
     required: true
-  },
-  token: {
+  }],
+  mainrole: {
     type: String,
     required: true
   }
 })
-export default mongoose.model("boostertoken", boostertoken)
+
+export default mongoose.model("guild-data", guildSchema)

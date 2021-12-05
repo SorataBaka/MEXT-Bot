@@ -1,12 +1,12 @@
 import { Message } from 'discord.js';
 import { ClientExtensionInterface } from "../../types"
 module.exports = {
-  name: "registerrole",
-  description: "Registers a required role",
-  usage: "registerrole {role id}",
+  name: "registermain",
+  description: "Registers a main role",
+  usage: "registermain {role id}",
   args: "multiple",
   commandGroup: "Utils",
-  commandGroupName: "registerrole",
+  commandGroupName: "registermain",
   async execute(message: Message, args: string[] | string, client: ClientExtensionInterface) {
     if(!message.member?.permissions.has("MANAGE_GUILD")) return message.reply("You do not have any permission to use this command!")
     if(args.length == 0 ) return message.reply("Please provide a role ID!")
@@ -17,15 +17,15 @@ module.exports = {
       guildid: message.guild?.id
     },{
       guildid: message.guild?.id,
-      $push:{
-        requiredRoles: roleid
+      $set: {
+        mainrole: roleid
       }
     }, {
       upsert: true
     }).catch((err:any) => {
       console.log(err)
     })
-    if(write) return message.reply(`I have registered the role ${rolename} into the required roles list.`)
+    if(write) return message.reply(`I have registered the role ${rolename} into the main roles list.`)
     if(!write) return message.reply("There seems to be a problem registering the role! Please try again.")
     
   }
