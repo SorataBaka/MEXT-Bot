@@ -11,9 +11,9 @@
     "resize-img": "^2.0.0",
     "shortid": "^2.2.16"
   },
-  "name": "akame-v2",
+  "name": "mext-bot",
   "version": "1.0.0",
-  "description": "Yandere Kitsune bot for Sashimi Discord Server at discord.gg/sashimi",
+  "description": "MEXT Discord Server moderation bot",
   "main": "index.ts",
   "scripts": {
     "start": "tsc && node ./build/index.js",
