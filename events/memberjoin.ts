@@ -10,6 +10,7 @@ module.exports = {
       .setTimestamp()
       .setThumbnail(client.user?.avatarURL() as string)
       .setDescription("Please make sure you select your roles in #roles in order to gain access to the server.")
+      .setColor(await client.ClientFunction.generateColor())
     return member.send({
       embeds: [embed]
     }).catch()

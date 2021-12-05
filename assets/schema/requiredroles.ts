@@ -4,10 +4,12 @@ const guildSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  requiredRoles: [{
-    type: String,
-    required: true
-  }],
+  requiredRoles: [[
+    {
+      type: String,
+      required: true
+    }
+  ]],
   mainrole: {
     type: String,
     required: true
