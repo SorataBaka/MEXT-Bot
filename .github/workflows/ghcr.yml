@@ -22,4 +22,4 @@ jobs:
     - name: Build the Docker image
       run: docker build -t ghcr.io/soratabaka/mext-bot .
     - name: Docker Push
-      run: docker push ghcr.io/soratabaka/akame-v2
+      run: docker push ghcr.io/soratabaka/mext-bot
