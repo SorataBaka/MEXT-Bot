@@ -8,7 +8,7 @@ export default class DatabasesClass implements ClientDatabaseInterface {
   public RedisClient
   public getAsync
   public setAsync
-  constructor(URI:string, redisIP:string, redisPORT:number){
+  constructor(URI:string, REDIS_URI:string){
     mongoose.connect(URI)
     mongoose.connection.on("connecting", () => {
       console.log("Connecting to MongoDB Database")
@@ -21,8 +21,7 @@ export default class DatabasesClass implements ClientDatabaseInterface {
       throw err
     })
     this.RedisClient = redis.createClient({
-      host: redisIP,
-      port: redisPORT,
+      url: REDIS_URI,
       no_ready_check: true
     })
     this.RedisClient.on("connect", () => {

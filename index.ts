@@ -15,9 +15,7 @@ if(!process.env.TOKEN || !process.env.PREFIX  || !process.env.URI) {
 //Process all required ENV's
 const TOKEN = process.env.TOKEN as string
 const URI = process.env.URI as string
-const REDIS_CONNECTION = process.env.REDIS_CONNECTION as string
-const REDIS_IP = REDIS_CONNECTION.split(":")[0] as string
-const REDIS_PORT = parseInt(REDIS_CONNECTION.split(":")[1]) as number
+const REDIS_URI = process.env.REDIS_URI as string
 
 //Set bot intents
 const intents:Intents = new Intents()
@@ -38,7 +36,7 @@ export default class ClientExtension extends Client implements ClientExtensionIn
       this.MessageCommandGroups = new Collection()
       this.EventCollection = new Collection()
       this.ClientFunction = new ClientFunction()
-      this.ClientDatabase = new ClientDatabase(URI, REDIS_IP, REDIS_PORT)
+      this.ClientDatabase = new ClientDatabase(URI, REDIS_URI)
   }
 }
 const client:ClientExtension = new ClientExtension(intents)
