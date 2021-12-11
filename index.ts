@@ -15,7 +15,7 @@ if(!process.env.TOKEN || !process.env.PREFIX  || !process.env.URI) {
 //Process all required ENV's
 const TOKEN = process.env.TOKEN as string
 const URI = process.env.URI as string
-const REDIS_URI = process.env.REDIS_URI as string
+const REDIS_URI = process.env.REDIS_CONNECTION as string
 
 //Set bot intents
 const intents:Intents = new Intents()
