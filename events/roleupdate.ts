@@ -25,9 +25,13 @@ module.exports = {
       if(flag) rolehad++
     }
     if(rolehad == amountOfRoleRequired){
-      return newMember.roles.add(mainrole).catch()
+      return newMember.roles.add(mainrole).catch(err => {
+        console.log(err)
+      })
     }else{
-      return newMember.roles.remove(mainrole).catch()
+      return newMember.roles.remove(mainrole).catch(err => {
+        console.log(err)
+      })
     }
   } 
 };

@@ -13,6 +13,8 @@ module.exports = {
       .setColor(await client.ClientFunction.generateColor())
     return member.send({
       embeds: [embed]
-    }).catch()
+    }).catch(err => {
+      console.log(err)
+    })
   }
 };

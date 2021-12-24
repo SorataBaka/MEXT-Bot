@@ -21,10 +21,14 @@ module.exports = {
         .setColor(await client.ClientFunction.generateColor())
       await newMember.send({
         embeds: [embed]
-      }).catch()
+      }).catch(err => {
+        console.log(err)
+      })
       return newMember.ban({
         reason: "Not a member accepted into secondary screening by the Japanese Government"
-      }).catch()
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 };
