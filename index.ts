@@ -70,6 +70,7 @@ for(const eventFile of subEventFolder){
 
 //Login the bot
 client.login(TOKEN)
+client.on("debug", ( e ) => console.log(e));
 export { client }
 process.on("SIGINT" || "SIGTERM", () => {
   console.log("Shutting down")
