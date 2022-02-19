@@ -1,9 +1,10 @@
 import { Client, Intents, Collection } from "discord.js"
 import { config } from "dotenv"
 
-import { Command, Events, ClientExtensionInterface, ClientFunctionInterface, ClientDatabaseInterface } from "./types"
+import { Command, Events, ClientExtensionInterface, ClientFunctionInterface, ClientDatabaseInterface, ClientCollectionsInterface } from "./types"
 import ClientFunction from "./assets/classes/ClientFunctions"
 import ClientDatabase from "./assets/classes/ClientDatabase"
+import ClientCollections from "./assets/classes/ClientCollections"
 import fs from "fs"
 config()
 console.clear()
@@ -28,6 +29,7 @@ export default class ClientExtension extends Client implements ClientExtensionIn
   public EventCollection:Collection<string, Events>
   public ClientFunction:ClientFunctionInterface
   public ClientDatabase:ClientDatabaseInterface
+  public ClientCollections: ClientCollectionsInterface;
   public PREFIX = process.env.PREFIX as string
   public INVITE_LINK = process.env.INVITE_LINK as string || "No invite link provided"
   public constructor(intents:Intents) {
@@ -37,6 +39,7 @@ export default class ClientExtension extends Client implements ClientExtensionIn
       this.EventCollection = new Collection()
       this.ClientFunction = new ClientFunction()
       this.ClientDatabase = new ClientDatabase(URI, REDIS_URI)
+      this.ClientCollections = new ClientCollections()
   }
 }
 const client:ClientExtension = new ClientExtension(intents)
@@ -69,8 +72,16 @@ for(const eventFile of subEventFolder){
 }
 
 //Login the bot
+
+
+const debuggingEnabled = process.env.DEBUGGING_ENABLED as string || "FALSE"
+if(debuggingEnabled.toUpperCase() === "TRUE"){
+  client.on("debug", ( e ) => console.log(e));
+  client.on("warn", ( e ) => console.log(e));
+  client.on("error", ( e ) => console.log(e));
+}
+
 client.login(TOKEN)
-client.on("debug", ( e ) => console.log(e));
 export { client }
 process.on("SIGINT" || "SIGTERM", () => {
   console.log("Shutting down")

@@ -46,8 +46,7 @@ export interface ClientFunctionInterface {
   getprefix:Function
 }
 export interface ClientCollectionsInterface {
-  deleteSnipes:Collection<string, messageDeleteHeader[]>
-  editSnipes:Collection<string, messageEditHeader[]>
+  sentMessages:Collection<string, string[]>
 }
 export interface ClientDatabaseInterface {
   guildData:Model<any>
@@ -62,5 +61,6 @@ export interface ClientExtensionInterface extends Client{
   PREFIX:string
   ClientFunction:ClientFunctionInterface
   ClientDatabase:ClientDatabaseInterface
+  ClientCollections:ClientCollectionsInterface
   INVITE_LINK:string
 }
