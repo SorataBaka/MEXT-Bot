@@ -13,7 +13,7 @@ module.exports = {
     const roleid = args[0] as string
     if(!message.guild?.roles.cache.has(roleid)) return message.reply("I can't find this role in this server. Are you sure you typed it correctly?")
     const rolename = message.guild?.roles.cache.get(roleid)?.name
-    await client.ClientDatabase.guildData.findOneAndUpdate({
+     await client.ClientDatabase.guildData.findOneAndUpdate({
       guildid: message.guild?.id
     },{
       guildid: message.guild?.id,

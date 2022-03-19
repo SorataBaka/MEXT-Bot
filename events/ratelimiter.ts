@@ -6,6 +6,8 @@ module.exports = {
 	async execute(message: Message, client: ClientExtensionInterface) {
 		if (message.member?.user.bot) return;
 		const messageContent = message.content;
+		if (messageContent.startsWith(client.PREFIX)) return;
+		if (messageContent === "") return;
 		const messageAuthor = message.author.id;
 		const messageChannel = message.channel;
 		if (client.ClientCollections.sentMessages.has(messageAuthor)) {
