@@ -4,7 +4,7 @@
     "@types/redis": "^2.8.32",
     "axios": "^0.24.0",
     "discord.js": "^13.3.1",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
     "mongoose": "^6.0.13",
     "redis": "^3.1.2",
